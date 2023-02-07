@@ -1,1 +1,3 @@
-# nefu-backend-2023-autumn
+# Команда: potomPridumayu
+Иннокентьев Владимир
+Луковцев Алексей 
