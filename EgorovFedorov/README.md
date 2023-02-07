@@ -1,6 +1,6 @@
-Authors: 
-Fedorov Baiytaan
-Egorov Aital
+Authors:  
+Fedorov Baiytaan  
+Egorov Aital  
 
-Date created:
+Date created:  
 07.02.2023
