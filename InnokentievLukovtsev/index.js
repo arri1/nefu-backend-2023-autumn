@@ -78,8 +78,6 @@ main()
         process.exit(1);
     });
 
-
-
 app.get("/allUser", async (req, res) => {
     const users = await prisma.user.findMany({});
     res.json(users);
@@ -104,3 +102,5 @@ app.get("/allPosts", async (req, res) => {
     const posts = await prisma.post.findMany({});
     res.json(posts);
 });
+
+//get post delete
