@@ -64,6 +64,9 @@ web_modules/
 .rts2_cache_es/
 .rts2_cache_umd/
 
+# Json
+*.json
+
 # Optional REPL history
 .node_repl_history
 
