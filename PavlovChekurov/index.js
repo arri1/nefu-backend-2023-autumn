@@ -90,7 +90,7 @@ app.post("/addPost", async (req, res) => {
             content: req.body.content,
             author: {
                 connect: {
-                    id: 1,
+                    id: req.body.authorId,
                 },
             },
         },
@@ -98,7 +98,7 @@ app.post("/addPost", async (req, res) => {
     res.json(newPost);
 });
 
-app.get("/getPost/:id", async(req,res)=>{
+app.get("/getPost/:id", async(req, res) => {
     const post = await prisma.post.findUnique({
         where: {
             id: parseInt(req.params.id)
@@ -107,7 +107,16 @@ app.get("/getPost/:id", async(req,res)=>{
     res.json(post);
 });
 
-app.put("/updatePost", async(req,res)=>{
+app.get("/getUser/:id", async(req, res) => {
+    const user = await prisma.user.findUnique({
+        where: {
+            id: parseInt(req.params.id)
+        }
+    })
+    res.json(user);
+});
+
+app.put("/updatePost", async(req, res) => {
     const updatedPost = await prisma.post.update({
         where: {
             id: parseInt(req.body.id)
@@ -120,11 +129,20 @@ app.put("/updatePost", async(req,res)=>{
     res.json(updatedPost);
 });
 
-app.delete("/deletePost/:id", async(req,res)=>{
+app.delete("/deletePost/:id", async(req, res) => {
     const deletedPost = await prisma.post.delete({
         where: {
             id: parseInt(req.params.id)
         }
     })
     res.json(deletedPost);
+});
+
+app.delete("/deleteUser/:id", async(req, res) => {
+    const deletedUser = await prisma.user.delete({
+        where: {
+            id: parseInt(req.params.id)
+        }
+    })
+    res.json(deletedUser);
 });
