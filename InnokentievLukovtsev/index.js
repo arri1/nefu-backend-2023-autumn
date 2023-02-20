@@ -96,13 +96,18 @@ app.post("/addUser", async (req, res) => {
     res.json(addUser);
 });
 
-app.post("/addPost", async (req, res) => {
-    const {title , content, published} = req.body
+app.post("/addPost/", async (req, res) => {
+    const {title , content, published, authorId} = req.body
     const addPost = await prisma.post.create({
         data: {
             title,
             content,
-            published
+            published,
+            author: {
+                connect: {
+                    id: authorId,
+                }
+            },
         }
     })
     res.json(addPost);
