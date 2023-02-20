@@ -85,31 +85,27 @@ app.get("/allUser", async (req, res) => {
     res.json(users);
 });
 
-
 app.post("/addUser", async (req, res) => {
     const {email, name} = req.body
-    const result = await prisma.user.create({
+    const addUser = await prisma.user.create({
         data: {
             email,
             name
         }
     })
-    res.json(result);
+    res.json(addUser);
 });
 
 app.post("/addPost", async (req, res) => {
-    const newPost = await prisma.post.create({
+    const {title , content, published} = req.body
+    const addPost = await prisma.post.create({
         data: {
-            title: "test",
-            author: {
-                connect: {
-                    id: 1,
-                },
-            },
-            test: "test",
-        },
-    });
-    res.json(newPost);
+            title,
+            content,
+            published
+        }
+    })
+    res.json(addPost);
 });
 
 app.get("/allPosts", async (req, res) => {
