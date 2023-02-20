@@ -96,7 +96,7 @@ app.post("/addUser", async (req, res) => {
     res.json(addUser);
 });
 
-app.post("/addPost/", async (req, res) => {
+app.post("/addPost", async (req, res) => {
     const {title , content, published, authorId} = req.body
     const addPost = await prisma.post.create({
         data: {
@@ -118,4 +118,41 @@ app.get("/allPosts", async (req, res) => {
     res.json(posts);
 });
 
+app.get("/getPost/:id", async(req, res) => {
+    const post = await prisma.post.findUnique({
+        where: {
+            id: parseInt(req.params.id)
+        }
+    })
+    res.json(post);
+});
+app.post("/updatePost", async(req, res) => {
+    const {postId, title, content, published, authorId} = req.body
+    const updatePost = await prisma.post.update({
+        where: {
+            id: postId
+        },
+        data: {
+            title,
+            content,
+            published,
+            author: {
+                connect: {
+                    id: authorId,
+                }
+            },
+        }
+    })
+    res.json(updatePost);
+});
+
+app.post("/deletePost", async(req, res) => {
+    const {postId} = req.body
+    const deletePost = await prisma.post.delete({
+        where: {
+            id: parseInt(postId)
+        },
+    })
+    res.json(deletePost);
+});
 //get post delete
