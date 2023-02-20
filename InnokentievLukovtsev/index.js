@@ -2,6 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const express = require("express");
 const { graphqlHTTP } = require("express-graphql");
 const { makeExecutableSchema } = require("@graphql-tools/schema");
+const bodyParser = require('body-parser');
 
 const prisma = new PrismaClient();
 
@@ -36,6 +37,8 @@ app.use(
     })
 );
 
+app.use(bodyParser.json())
+
 app.listen(4000);
 
 async function main() {
@@ -64,8 +67,7 @@ async function main() {
     //     where: { id: 1 },
     //     data: { published: true },
     // })
-    // console.log(post)
-
+    //console.log(post)
 }
 
 main()
@@ -81,6 +83,18 @@ main()
 app.get("/allUser", async (req, res) => {
     const users = await prisma.user.findMany({});
     res.json(users);
+});
+
+
+app.post("/addUser", async (req, res) => {
+    const {email, name} = req.body
+    const result = await prisma.user.create({
+        data: {
+            email,
+            name
+        }
+    })
+    res.json(result);
 });
 
 app.post("/addPost", async (req, res) => {
