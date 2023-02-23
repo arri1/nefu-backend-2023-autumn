@@ -1,13 +1,24 @@
-## Группа:
-- Иннокентьев Владимир as **[0dj3](https://github.com/Witawe/nefu-backend-2023-autumn/commits?author=0dj3)**
-- Луковцев Алексей as **[Witawe](https://github.com/Witawe/nefu-backend-2023-autumn/commits?author=Witawe)**
+## DB
 
-![monkey](https://i.giphy.com/media/5Zesu5VPNGJlm/giphy.webp)
+We added `sqlite` as db provider in `schema.prisma` you can change it to your custom db provider
 
-## Документация:
-> **TODO: сделать**
+after an update your `schema.prisma` run
 
-## Полезные ссылки:
-- [Документация prisma](https://www.prisma.io/docs/getting-started/quickstart)
+```shell
+yarn db-dev
+```
 
-![flamed_monkey](https://i.giphy.com/media/3o85xDWOG8Sbl9yQzm/giphy.webp)
+this commands will save your schema into db
+
+now run
+
+```shell
+yarn generate
+yarn dev
+```
+
+- build prisma client
+- build crud system
+- start dev server
+
+`Good work`
