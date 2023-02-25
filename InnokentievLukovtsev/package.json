@@ -1,10 +1,10 @@
 {
-  "name": "InnokentievLukovtsev",
+  "name": "innokentievlukovtsev",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "private": true,
-  "description": "",
+  "description": "We added `sqlite` as db provider in `schema.prisma` you can change it to your custom db provider",
   "scripts": {
     "start": "nodemon src/server.ts",
     "clean": "rm -rf dist",
@@ -32,6 +32,10 @@
     "nodemon": "^2.0.20",
     "typescript": "4.9.5"
   },
-  "repository": "-",
-  "author": "Innokentiev-V-Lukovtsev-A"
+  "repository": {
+    "type": "git",
+    "url": "-"
+  },
+  "author": "Innokentiev-V-Lukovtsev-A",
+  "keywords": []
 }
