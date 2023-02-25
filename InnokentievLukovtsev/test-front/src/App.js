@@ -1,5 +1,6 @@
 import { useQuery, gql, useMutation } from "@apollo/client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import bcrypt from "bcryptjs";
 import Modal from "./modal/Modal";
 import "./styles.css";
 
@@ -22,13 +23,19 @@ const CREATE_ONE_USER = gql`
 `;
 
 const App = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const emailInputRef = useRef();
+  const nameInputRef = useRef();
+  const passwordInputRef = useRef();
 
   const [RegActive, setRegActive] = useState(false);
   const [ListActive, setListActive] = useState(false);
   const [SignActive, setSignActive] = useState(false);
+
+  const email = emailInputRef.current.value;
+  const name = nameInputRef.current.value;
+  const input_password = passwordInputRef.current.value;
+
+  const password = bcrypt.hashSync(input_password, "$2a$10$CwTycUXWue0Thq9StjUM0u");
 
   const { loading, error, data, refetch } = useQuery(FIND_MANY_USER);
   const [createUser, {
@@ -43,26 +50,25 @@ const App = () => {
       width: "100%",
       flexDirection: "column",
       height: "100vh",
-      background: "white"
+      background: "gray"
     }}
   >
-
-    <button className={"open-btn"} style={{ marginTop: 10 }} onClick={() => setRegActive(true)}> Registration</button>
-
+    <button className={"open-btn"} onClick={() => setRegActive(true)}> Registration</button>
     <Modal active={RegActive} setActive={setRegActive}>
       <div style={{
         display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", background: "grey"
       }}>
-        <input placeholder={"Email"} style={{ marginTop: 10 }} value={email}
-               onChange={(e) => setEmail(e.target.value)} />
-        <input placeholder={"Name"} value={name} onChange={e => setName(e.target.value)} style={{ marginTop: 10 }} />
+        <input placeholder={"Email"} style={{ marginTop: 10 }}
+               ref={emailInputRef} type="email" />
+        <input placeholder={"Name"} ref={nameInputRef} type="name"
+               style={{ marginTop: 10 }} />
         <input placeholder={"Password"} type={"password"}
-               value={password}
-               onChange={(e) => setPassword(e.target.value)}
+               ref={passwordInputRef} type="password"
                style={{ marginTop: 10 }}
         />
         <button
-          style={{ marginTop: 10, width: 100, height: 30, marginBottom: 10 }}
+          className={"open-btn"}
+          style={{ marginTop: 20, width: 100, height: 30, marginBottom: 25 }}
           onClick={() => {
             createUser({
               variables: {
@@ -74,7 +80,7 @@ const App = () => {
               .then((data) => {
                 console.log(data);
                 refetch();
-                alert("user create");
+                alert("User successfully registered");
               })
               .catch((e) => {
                 alert(e.message);
@@ -85,7 +91,9 @@ const App = () => {
       </div>
     </Modal>
 
-    <button className={"open-btn"} style={{ marginTop: 10 }} onClick={() => setListActive(true)}> List of registered users </button>
+    <button className={"open-btn"} style={{ marginTop: 10 }} onClick={() => setListActive(true)}> List of registered
+      users
+    </button>
 
     <Modal active={ListActive} setActive={setListActive}>
       <div style={{
@@ -100,20 +108,20 @@ const App = () => {
       </div>
     </Modal>
 
-    <button className={"open-btn"} style={{ marginTop: 10 }} onClick={() => setSignActive(true)}>Sign in</button>
+    <button className={"open-btn"} style={{ marginTop: 10 }} onClick={() => setSignActive(true)}>Log In</button>
 
     <Modal active={SignActive} setActive={setSignActive}>
       <div style={{
         display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", background: "grey"
       }}>
-        <input placeholder={"Email"} style={{ marginTop: 10 }} value={email}
-               onChange={(e) => setEmail(e.target.value)} />
+        <h1 style={{ marginBottom: 20 }}> Log In </h1>
+
+        <input placeholder={"Email"} style={{ marginTop: 10 }} ref={emailInputRef} type="email" />
         <input placeholder={"Password"} type={"password"}
-               value={password}
-               onChange={(e) => setPassword(e.target.value)}
+               ref={passwordInputRef} type="password"
                style={{ marginTop: 10 }}
         />
-        <button style={{ marginTop: 10, marginBottom: 10 }}>Send</button>
+        <button className={"open-btn"} style={{ marginTop: 20, marginBottom: 25, width: 150 }}>Log in</button>
       </div>
     </Modal>
   </div>);
