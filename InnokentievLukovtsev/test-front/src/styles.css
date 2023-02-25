@@ -1,0 +1,17 @@
+.popupdiv {
+    display: flex;
+    alignItems: center;
+    justifyContent: center;
+    flexDirection: column;
+    background: grey
+}
+
+.maindiv {
+    display: flex;
+    alignItems: center;
+    justifyContent: center;
+    width: 100%;
+    flexDirection: column;
+    height: 100vh;
+    background: grey;
+}
