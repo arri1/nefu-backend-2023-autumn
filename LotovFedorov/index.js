@@ -81,7 +81,8 @@ app.get("/addUser", async (req, res) => {
     const user = await prisma.user.create({
         data: {
             name: "Aytal",
-            email: "Aytal@mail.com",
+            email: "AlexeyLotov@gmail.com",
+            password: "Pa$$w0rd123",
         },
     });
     console.log(user);
