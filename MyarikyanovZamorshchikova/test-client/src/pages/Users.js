@@ -1,7 +1,7 @@
 import "./styles.css";
 
 
-export const Register = (props) => {
+export const Users = (props) => {
     const { onClose, children } = props;
     return (
         <div className="modal">
@@ -10,4 +10,4 @@ export const Register = (props) => {
       );
 };
 
-export default Register;
+export default Users;
