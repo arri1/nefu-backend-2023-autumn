@@ -5,10 +5,10 @@ import { Context } from './context'
 import { GraphQLResolveInfo } from 'graphql'
 
 type Resolver<T extends {}, A extends {}, R extends any> = (
-  parent: T,
-  args: A,
-  context: Context,
-  info: GraphQLResolveInfo,
+    parent: T,
+    args: A,
+    context: Context,
+    info: GraphQLResolveInfo,
 ) => Promise<R>
 
 export type Resolvers = {
@@ -102,99 +102,99 @@ export type Group = { [key: string]: Resolver<any, any, any> } & {
 export type Query = { [key: string]: Resolver<any, any, any> } & {
   findFirstUser?: Resolver<{}, FindFirstUserArgs, Client.User | null>
   findFirstUserOrThrow?: Resolver<
-    {},
-    FindFirstUserOrThrowArgs,
-    Client.User | null
+      {},
+      FindFirstUserOrThrowArgs,
+      Client.User | null
   >
   findManyUser?: Resolver<{}, FindManyUserArgs, Client.User[]>
   findManyUserCount?: Resolver<{}, FindManyUserArgs, number>
   aggregateUser?: Resolver<
-    {},
-    AggregateUserArgs,
-    Client.Prisma.GetUserAggregateType<AggregateUserArgs>
+      {},
+      AggregateUserArgs,
+      Client.Prisma.GetUserAggregateType<AggregateUserArgs>
   >
   groupByUser?: Resolver<
-    {},
-    GroupByUserArgs,
-    Client.Prisma.UserGroupByOutputType[]
+      {},
+      GroupByUserArgs,
+      Client.Prisma.UserGroupByOutputType[]
   >
   findUniqueUser?: Resolver<{}, FindUniqueUserArgs, Client.User | null>
   findUniqueUserOrThrow?: Resolver<
-    {},
-    FindUniqueUserOrThrowArgs,
-    Client.User | null
+      {},
+      FindUniqueUserOrThrowArgs,
+      Client.User | null
   >
   findFirstPost?: Resolver<{}, FindFirstPostArgs, Client.Post | null>
   findFirstPostOrThrow?: Resolver<
-    {},
-    FindFirstPostOrThrowArgs,
-    Client.Post | null
+      {},
+      FindFirstPostOrThrowArgs,
+      Client.Post | null
   >
   findManyPost?: Resolver<{}, FindManyPostArgs, Client.Post[]>
   findManyPostCount?: Resolver<{}, FindManyPostArgs, number>
   aggregatePost?: Resolver<
-    {},
-    AggregatePostArgs,
-    Client.Prisma.GetPostAggregateType<AggregatePostArgs>
+      {},
+      AggregatePostArgs,
+      Client.Prisma.GetPostAggregateType<AggregatePostArgs>
   >
   groupByPost?: Resolver<
-    {},
-    GroupByPostArgs,
-    Client.Prisma.PostGroupByOutputType[]
+      {},
+      GroupByPostArgs,
+      Client.Prisma.PostGroupByOutputType[]
   >
   findUniquePost?: Resolver<{}, FindUniquePostArgs, Client.Post | null>
   findUniquePostOrThrow?: Resolver<
-    {},
-    FindUniquePostOrThrowArgs,
-    Client.Post | null
+      {},
+      FindUniquePostOrThrowArgs,
+      Client.Post | null
   >
   findFirstComment?: Resolver<{}, FindFirstCommentArgs, Client.Comment | null>
   findFirstCommentOrThrow?: Resolver<
-    {},
-    FindFirstCommentOrThrowArgs,
-    Client.Comment | null
+      {},
+      FindFirstCommentOrThrowArgs,
+      Client.Comment | null
   >
   findManyComment?: Resolver<{}, FindManyCommentArgs, Client.Comment[]>
   findManyCommentCount?: Resolver<{}, FindManyCommentArgs, number>
   aggregateComment?: Resolver<
-    {},
-    AggregateCommentArgs,
-    Client.Prisma.GetCommentAggregateType<AggregateCommentArgs>
+      {},
+      AggregateCommentArgs,
+      Client.Prisma.GetCommentAggregateType<AggregateCommentArgs>
   >
   groupByComment?: Resolver<
-    {},
-    GroupByCommentArgs,
-    Client.Prisma.CommentGroupByOutputType[]
+      {},
+      GroupByCommentArgs,
+      Client.Prisma.CommentGroupByOutputType[]
   >
   findUniqueComment?: Resolver<{}, FindUniqueCommentArgs, Client.Comment | null>
   findUniqueCommentOrThrow?: Resolver<
-    {},
-    FindUniqueCommentOrThrowArgs,
-    Client.Comment | null
+      {},
+      FindUniqueCommentOrThrowArgs,
+      Client.Comment | null
   >
   findFirstGroup?: Resolver<{}, FindFirstGroupArgs, Client.Group | null>
   findFirstGroupOrThrow?: Resolver<
-    {},
-    FindFirstGroupOrThrowArgs,
-    Client.Group | null
+      {},
+      FindFirstGroupOrThrowArgs,
+      Client.Group | null
   >
   findManyGroup?: Resolver<{}, FindManyGroupArgs, Client.Group[]>
   findManyGroupCount?: Resolver<{}, FindManyGroupArgs, number>
   aggregateGroup?: Resolver<
-    {},
-    AggregateGroupArgs,
-    Client.Prisma.GetGroupAggregateType<AggregateGroupArgs>
+      {},
+      AggregateGroupArgs,
+      Client.Prisma.GetGroupAggregateType<AggregateGroupArgs>
   >
   groupByGroup?: Resolver<
-    {},
-    GroupByGroupArgs,
-    Client.Prisma.GroupGroupByOutputType[]
+      {},
+      GroupByGroupArgs,
+      Client.Prisma.GroupGroupByOutputType[]
   >
   findUniqueGroup?: Resolver<{}, FindUniqueGroupArgs, Client.Group | null>
   findUniqueGroupOrThrow?: Resolver<
-    {},
-    FindUniqueGroupOrThrowArgs,
-    Client.Group | null
+      {},
+      FindUniqueGroupOrThrowArgs,
+      Client.Group | null
   >
 }
 
@@ -216,40 +216,40 @@ export type Mutation = { [key: string]: Resolver<any, any, any> } & {
   createOneComment?: Resolver<{}, CreateOneCommentArgs, Client.Comment>
   upsertOneComment?: Resolver<{}, UpsertOneCommentArgs, Client.Comment>
   createManyComment?: Resolver<
-    {},
-    CreateManyCommentArgs,
-    Client.Prisma.BatchPayload
+      {},
+      CreateManyCommentArgs,
+      Client.Prisma.BatchPayload
   >
   deleteOneComment?: Resolver<{}, DeleteOneCommentArgs, Client.Comment | null>
   updateOneComment?: Resolver<{}, UpdateOneCommentArgs, Client.Comment | null>
   updateManyComment?: Resolver<
-    {},
-    UpdateManyCommentArgs,
-    Client.Prisma.BatchPayload
+      {},
+      UpdateManyCommentArgs,
+      Client.Prisma.BatchPayload
   >
   deleteManyComment?: Resolver<
-    {},
-    DeleteManyCommentArgs,
-    Client.Prisma.BatchPayload
+      {},
+      DeleteManyCommentArgs,
+      Client.Prisma.BatchPayload
   >
   createOneGroup?: Resolver<{}, CreateOneGroupArgs, Client.Group>
   upsertOneGroup?: Resolver<{}, UpsertOneGroupArgs, Client.Group>
   createManyGroup?: Resolver<
-    {},
-    CreateManyGroupArgs,
-    Client.Prisma.BatchPayload
+      {},
+      CreateManyGroupArgs,
+      Client.Prisma.BatchPayload
   >
   deleteOneGroup?: Resolver<{}, DeleteOneGroupArgs, Client.Group | null>
   updateOneGroup?: Resolver<{}, UpdateOneGroupArgs, Client.Group | null>
   updateManyGroup?: Resolver<
-    {},
-    UpdateManyGroupArgs,
-    Client.Prisma.BatchPayload
+      {},
+      UpdateManyGroupArgs,
+      Client.Prisma.BatchPayload
   >
   deleteManyGroup?: Resolver<
-    {},
-    DeleteManyGroupArgs,
-    Client.Prisma.BatchPayload
+      {},
+      DeleteManyGroupArgs,
+      Client.Prisma.BatchPayload
   >
   executeRaw?: Resolver<{}, ExecuteRawArgs, any>
   queryRaw?: Resolver<{}, QueryRawArgs, any>
@@ -257,29 +257,29 @@ export type Mutation = { [key: string]: Resolver<any, any, any> } & {
 
 export type AggregateUser = { [key: string]: Resolver<any, any, any> } & {
   _count?: Resolver<
-    Client.Prisma.AggregateUser,
-    {},
-    Client.Prisma.UserCountAggregateOutputType | null
+      Client.Prisma.AggregateUser,
+      {},
+      Client.Prisma.UserCountAggregateOutputType | null
   >
   _avg?: Resolver<
-    Client.Prisma.AggregateUser,
-    {},
-    Client.Prisma.UserAvgAggregateOutputType | null
+      Client.Prisma.AggregateUser,
+      {},
+      Client.Prisma.UserAvgAggregateOutputType | null
   >
   _sum?: Resolver<
-    Client.Prisma.AggregateUser,
-    {},
-    Client.Prisma.UserSumAggregateOutputType | null
+      Client.Prisma.AggregateUser,
+      {},
+      Client.Prisma.UserSumAggregateOutputType | null
   >
   _min?: Resolver<
-    Client.Prisma.AggregateUser,
-    {},
-    Client.Prisma.UserMinAggregateOutputType | null
+      Client.Prisma.AggregateUser,
+      {},
+      Client.Prisma.UserMinAggregateOutputType | null
   >
   _max?: Resolver<
-    Client.Prisma.AggregateUser,
-    {},
-    Client.Prisma.UserMaxAggregateOutputType | null
+      Client.Prisma.AggregateUser,
+      {},
+      Client.Prisma.UserMaxAggregateOutputType | null
   >
 }
 
@@ -293,57 +293,57 @@ export type UserGroupByOutputType = {
   password?: Resolver<Client.Prisma.UserGroupByOutputType, {}, string>
   groupId?: Resolver<Client.Prisma.UserGroupByOutputType, {}, number | null>
   _count?: Resolver<
-    Client.Prisma.UserGroupByOutputType,
-    {},
-    Client.Prisma.UserCountAggregateOutputType | null
+      Client.Prisma.UserGroupByOutputType,
+      {},
+      Client.Prisma.UserCountAggregateOutputType | null
   >
   _avg?: Resolver<
-    Client.Prisma.UserGroupByOutputType,
-    {},
-    Client.Prisma.UserAvgAggregateOutputType | null
+      Client.Prisma.UserGroupByOutputType,
+      {},
+      Client.Prisma.UserAvgAggregateOutputType | null
   >
   _sum?: Resolver<
-    Client.Prisma.UserGroupByOutputType,
-    {},
-    Client.Prisma.UserSumAggregateOutputType | null
+      Client.Prisma.UserGroupByOutputType,
+      {},
+      Client.Prisma.UserSumAggregateOutputType | null
   >
   _min?: Resolver<
-    Client.Prisma.UserGroupByOutputType,
-    {},
-    Client.Prisma.UserMinAggregateOutputType | null
+      Client.Prisma.UserGroupByOutputType,
+      {},
+      Client.Prisma.UserMinAggregateOutputType | null
   >
   _max?: Resolver<
-    Client.Prisma.UserGroupByOutputType,
-    {},
-    Client.Prisma.UserMaxAggregateOutputType | null
+      Client.Prisma.UserGroupByOutputType,
+      {},
+      Client.Prisma.UserMaxAggregateOutputType | null
   >
 }
 
 export type AggregatePost = { [key: string]: Resolver<any, any, any> } & {
   _count?: Resolver<
-    Client.Prisma.AggregatePost,
-    {},
-    Client.Prisma.PostCountAggregateOutputType | null
+      Client.Prisma.AggregatePost,
+      {},
+      Client.Prisma.PostCountAggregateOutputType | null
   >
   _avg?: Resolver<
-    Client.Prisma.AggregatePost,
-    {},
-    Client.Prisma.PostAvgAggregateOutputType | null
+      Client.Prisma.AggregatePost,
+      {},
+      Client.Prisma.PostAvgAggregateOutputType | null
   >
   _sum?: Resolver<
-    Client.Prisma.AggregatePost,
-    {},
-    Client.Prisma.PostSumAggregateOutputType | null
+      Client.Prisma.AggregatePost,
+      {},
+      Client.Prisma.PostSumAggregateOutputType | null
   >
   _min?: Resolver<
-    Client.Prisma.AggregatePost,
-    {},
-    Client.Prisma.PostMinAggregateOutputType | null
+      Client.Prisma.AggregatePost,
+      {},
+      Client.Prisma.PostMinAggregateOutputType | null
   >
   _max?: Resolver<
-    Client.Prisma.AggregatePost,
-    {},
-    Client.Prisma.PostMaxAggregateOutputType | null
+      Client.Prisma.AggregatePost,
+      {},
+      Client.Prisma.PostMaxAggregateOutputType | null
   >
 }
 
@@ -357,57 +357,57 @@ export type PostGroupByOutputType = {
   createdAt?: Resolver<Client.Prisma.PostGroupByOutputType, {}, Date>
   updatedAt?: Resolver<Client.Prisma.PostGroupByOutputType, {}, Date>
   _count?: Resolver<
-    Client.Prisma.PostGroupByOutputType,
-    {},
-    Client.Prisma.PostCountAggregateOutputType | null
+      Client.Prisma.PostGroupByOutputType,
+      {},
+      Client.Prisma.PostCountAggregateOutputType | null
   >
   _avg?: Resolver<
-    Client.Prisma.PostGroupByOutputType,
-    {},
-    Client.Prisma.PostAvgAggregateOutputType | null
+      Client.Prisma.PostGroupByOutputType,
+      {},
+      Client.Prisma.PostAvgAggregateOutputType | null
   >
   _sum?: Resolver<
-    Client.Prisma.PostGroupByOutputType,
-    {},
-    Client.Prisma.PostSumAggregateOutputType | null
+      Client.Prisma.PostGroupByOutputType,
+      {},
+      Client.Prisma.PostSumAggregateOutputType | null
   >
   _min?: Resolver<
-    Client.Prisma.PostGroupByOutputType,
-    {},
-    Client.Prisma.PostMinAggregateOutputType | null
+      Client.Prisma.PostGroupByOutputType,
+      {},
+      Client.Prisma.PostMinAggregateOutputType | null
   >
   _max?: Resolver<
-    Client.Prisma.PostGroupByOutputType,
-    {},
-    Client.Prisma.PostMaxAggregateOutputType | null
+      Client.Prisma.PostGroupByOutputType,
+      {},
+      Client.Prisma.PostMaxAggregateOutputType | null
   >
 }
 
 export type AggregateComment = { [key: string]: Resolver<any, any, any> } & {
   _count?: Resolver<
-    Client.Prisma.AggregateComment,
-    {},
-    Client.Prisma.CommentCountAggregateOutputType | null
+      Client.Prisma.AggregateComment,
+      {},
+      Client.Prisma.CommentCountAggregateOutputType | null
   >
   _avg?: Resolver<
-    Client.Prisma.AggregateComment,
-    {},
-    Client.Prisma.CommentAvgAggregateOutputType | null
+      Client.Prisma.AggregateComment,
+      {},
+      Client.Prisma.CommentAvgAggregateOutputType | null
   >
   _sum?: Resolver<
-    Client.Prisma.AggregateComment,
-    {},
-    Client.Prisma.CommentSumAggregateOutputType | null
+      Client.Prisma.AggregateComment,
+      {},
+      Client.Prisma.CommentSumAggregateOutputType | null
   >
   _min?: Resolver<
-    Client.Prisma.AggregateComment,
-    {},
-    Client.Prisma.CommentMinAggregateOutputType | null
+      Client.Prisma.AggregateComment,
+      {},
+      Client.Prisma.CommentMinAggregateOutputType | null
   >
   _max?: Resolver<
-    Client.Prisma.AggregateComment,
-    {},
-    Client.Prisma.CommentMaxAggregateOutputType | null
+      Client.Prisma.AggregateComment,
+      {},
+      Client.Prisma.CommentMaxAggregateOutputType | null
   >
 }
 
@@ -421,57 +421,57 @@ export type CommentGroupByOutputType = {
   createdAt?: Resolver<Client.Prisma.CommentGroupByOutputType, {}, Date>
   updatedAt?: Resolver<Client.Prisma.CommentGroupByOutputType, {}, Date>
   _count?: Resolver<
-    Client.Prisma.CommentGroupByOutputType,
-    {},
-    Client.Prisma.CommentCountAggregateOutputType | null
+      Client.Prisma.CommentGroupByOutputType,
+      {},
+      Client.Prisma.CommentCountAggregateOutputType | null
   >
   _avg?: Resolver<
-    Client.Prisma.CommentGroupByOutputType,
-    {},
-    Client.Prisma.CommentAvgAggregateOutputType | null
+      Client.Prisma.CommentGroupByOutputType,
+      {},
+      Client.Prisma.CommentAvgAggregateOutputType | null
   >
   _sum?: Resolver<
-    Client.Prisma.CommentGroupByOutputType,
-    {},
-    Client.Prisma.CommentSumAggregateOutputType | null
+      Client.Prisma.CommentGroupByOutputType,
+      {},
+      Client.Prisma.CommentSumAggregateOutputType | null
   >
   _min?: Resolver<
-    Client.Prisma.CommentGroupByOutputType,
-    {},
-    Client.Prisma.CommentMinAggregateOutputType | null
+      Client.Prisma.CommentGroupByOutputType,
+      {},
+      Client.Prisma.CommentMinAggregateOutputType | null
   >
   _max?: Resolver<
-    Client.Prisma.CommentGroupByOutputType,
-    {},
-    Client.Prisma.CommentMaxAggregateOutputType | null
+      Client.Prisma.CommentGroupByOutputType,
+      {},
+      Client.Prisma.CommentMaxAggregateOutputType | null
   >
 }
 
 export type AggregateGroup = { [key: string]: Resolver<any, any, any> } & {
   _count?: Resolver<
-    Client.Prisma.AggregateGroup,
-    {},
-    Client.Prisma.GroupCountAggregateOutputType | null
+      Client.Prisma.AggregateGroup,
+      {},
+      Client.Prisma.GroupCountAggregateOutputType | null
   >
   _avg?: Resolver<
-    Client.Prisma.AggregateGroup,
-    {},
-    Client.Prisma.GroupAvgAggregateOutputType | null
+      Client.Prisma.AggregateGroup,
+      {},
+      Client.Prisma.GroupAvgAggregateOutputType | null
   >
   _sum?: Resolver<
-    Client.Prisma.AggregateGroup,
-    {},
-    Client.Prisma.GroupSumAggregateOutputType | null
+      Client.Prisma.AggregateGroup,
+      {},
+      Client.Prisma.GroupSumAggregateOutputType | null
   >
   _min?: Resolver<
-    Client.Prisma.AggregateGroup,
-    {},
-    Client.Prisma.GroupMinAggregateOutputType | null
+      Client.Prisma.AggregateGroup,
+      {},
+      Client.Prisma.GroupMinAggregateOutputType | null
   >
   _max?: Resolver<
-    Client.Prisma.AggregateGroup,
-    {},
-    Client.Prisma.GroupMaxAggregateOutputType | null
+      Client.Prisma.AggregateGroup,
+      {},
+      Client.Prisma.GroupMaxAggregateOutputType | null
   >
 }
 
@@ -483,29 +483,29 @@ export type GroupGroupByOutputType = {
   createdAt?: Resolver<Client.Prisma.GroupGroupByOutputType, {}, Date>
   updatedAt?: Resolver<Client.Prisma.GroupGroupByOutputType, {}, Date>
   _count?: Resolver<
-    Client.Prisma.GroupGroupByOutputType,
-    {},
-    Client.Prisma.GroupCountAggregateOutputType | null
+      Client.Prisma.GroupGroupByOutputType,
+      {},
+      Client.Prisma.GroupCountAggregateOutputType | null
   >
   _avg?: Resolver<
-    Client.Prisma.GroupGroupByOutputType,
-    {},
-    Client.Prisma.GroupAvgAggregateOutputType | null
+      Client.Prisma.GroupGroupByOutputType,
+      {},
+      Client.Prisma.GroupAvgAggregateOutputType | null
   >
   _sum?: Resolver<
-    Client.Prisma.GroupGroupByOutputType,
-    {},
-    Client.Prisma.GroupSumAggregateOutputType | null
+      Client.Prisma.GroupGroupByOutputType,
+      {},
+      Client.Prisma.GroupSumAggregateOutputType | null
   >
   _min?: Resolver<
-    Client.Prisma.GroupGroupByOutputType,
-    {},
-    Client.Prisma.GroupMinAggregateOutputType | null
+      Client.Prisma.GroupGroupByOutputType,
+      {},
+      Client.Prisma.GroupMinAggregateOutputType | null
   >
   _max?: Resolver<
-    Client.Prisma.GroupGroupByOutputType,
-    {},
-    Client.Prisma.GroupMaxAggregateOutputType | null
+      Client.Prisma.GroupGroupByOutputType,
+      {},
+      Client.Prisma.GroupMaxAggregateOutputType | null
   >
 }
 
@@ -535,9 +535,9 @@ export type UserAvgAggregateOutputType = {
 } & {
   id?: Resolver<Client.Prisma.UserAvgAggregateOutputType, {}, number | null>
   groupId?: Resolver<
-    Client.Prisma.UserAvgAggregateOutputType,
-    {},
-    number | null
+      Client.Prisma.UserAvgAggregateOutputType,
+      {},
+      number | null
   >
 }
 
@@ -546,9 +546,9 @@ export type UserSumAggregateOutputType = {
 } & {
   id?: Resolver<Client.Prisma.UserSumAggregateOutputType, {}, number | null>
   groupId?: Resolver<
-    Client.Prisma.UserSumAggregateOutputType,
-    {},
-    number | null
+      Client.Prisma.UserSumAggregateOutputType,
+      {},
+      number | null
   >
 }
 
@@ -557,21 +557,21 @@ export type UserMinAggregateOutputType = {
 } & {
   id?: Resolver<Client.Prisma.UserMinAggregateOutputType, {}, number | null>
   createdAt?: Resolver<
-    Client.Prisma.UserMinAggregateOutputType,
-    {},
-    Date | null
+      Client.Prisma.UserMinAggregateOutputType,
+      {},
+      Date | null
   >
   email?: Resolver<Client.Prisma.UserMinAggregateOutputType, {}, string | null>
   name?: Resolver<Client.Prisma.UserMinAggregateOutputType, {}, string | null>
   password?: Resolver<
-    Client.Prisma.UserMinAggregateOutputType,
-    {},
-    string | null
+      Client.Prisma.UserMinAggregateOutputType,
+      {},
+      string | null
   >
   groupId?: Resolver<
-    Client.Prisma.UserMinAggregateOutputType,
-    {},
-    number | null
+      Client.Prisma.UserMinAggregateOutputType,
+      {},
+      number | null
   >
 }
 
@@ -580,21 +580,21 @@ export type UserMaxAggregateOutputType = {
 } & {
   id?: Resolver<Client.Prisma.UserMaxAggregateOutputType, {}, number | null>
   createdAt?: Resolver<
-    Client.Prisma.UserMaxAggregateOutputType,
-    {},
-    Date | null
+      Client.Prisma.UserMaxAggregateOutputType,
+      {},
+      Date | null
   >
   email?: Resolver<Client.Prisma.UserMaxAggregateOutputType, {}, string | null>
   name?: Resolver<Client.Prisma.UserMaxAggregateOutputType, {}, string | null>
   password?: Resolver<
-    Client.Prisma.UserMaxAggregateOutputType,
-    {},
-    string | null
+      Client.Prisma.UserMaxAggregateOutputType,
+      {},
+      string | null
   >
   groupId?: Resolver<
-    Client.Prisma.UserMaxAggregateOutputType,
-    {},
-    number | null
+      Client.Prisma.UserMaxAggregateOutputType,
+      {},
+      number | null
   >
 }
 
@@ -619,9 +619,9 @@ export type PostAvgAggregateOutputType = {
 } & {
   id?: Resolver<Client.Prisma.PostAvgAggregateOutputType, {}, number | null>
   authorId?: Resolver<
-    Client.Prisma.PostAvgAggregateOutputType,
-    {},
-    number | null
+      Client.Prisma.PostAvgAggregateOutputType,
+      {},
+      number | null
   >
 }
 
@@ -630,9 +630,9 @@ export type PostSumAggregateOutputType = {
 } & {
   id?: Resolver<Client.Prisma.PostSumAggregateOutputType, {}, number | null>
   authorId?: Resolver<
-    Client.Prisma.PostSumAggregateOutputType,
-    {},
-    number | null
+      Client.Prisma.PostSumAggregateOutputType,
+      {},
+      number | null
   >
 }
 
@@ -641,25 +641,25 @@ export type PostMinAggregateOutputType = {
 } & {
   id?: Resolver<Client.Prisma.PostMinAggregateOutputType, {}, number | null>
   published?: Resolver<
-    Client.Prisma.PostMinAggregateOutputType,
-    {},
-    boolean | null
+      Client.Prisma.PostMinAggregateOutputType,
+      {},
+      boolean | null
   >
   title?: Resolver<Client.Prisma.PostMinAggregateOutputType, {}, string | null>
   authorId?: Resolver<
-    Client.Prisma.PostMinAggregateOutputType,
-    {},
-    number | null
+      Client.Prisma.PostMinAggregateOutputType,
+      {},
+      number | null
   >
   createdAt?: Resolver<
-    Client.Prisma.PostMinAggregateOutputType,
-    {},
-    Date | null
+      Client.Prisma.PostMinAggregateOutputType,
+      {},
+      Date | null
   >
   updatedAt?: Resolver<
-    Client.Prisma.PostMinAggregateOutputType,
-    {},
-    Date | null
+      Client.Prisma.PostMinAggregateOutputType,
+      {},
+      Date | null
   >
 }
 
@@ -668,25 +668,25 @@ export type PostMaxAggregateOutputType = {
 } & {
   id?: Resolver<Client.Prisma.PostMaxAggregateOutputType, {}, number | null>
   published?: Resolver<
-    Client.Prisma.PostMaxAggregateOutputType,
-    {},
-    boolean | null
+      Client.Prisma.PostMaxAggregateOutputType,
+      {},
+      boolean | null
   >
   title?: Resolver<Client.Prisma.PostMaxAggregateOutputType, {}, string | null>
   authorId?: Resolver<
-    Client.Prisma.PostMaxAggregateOutputType,
-    {},
-    number | null
+      Client.Prisma.PostMaxAggregateOutputType,
+      {},
+      number | null
   >
   createdAt?: Resolver<
-    Client.Prisma.PostMaxAggregateOutputType,
-    {},
-    Date | null
+      Client.Prisma.PostMaxAggregateOutputType,
+      {},
+      Date | null
   >
   updatedAt?: Resolver<
-    Client.Prisma.PostMaxAggregateOutputType,
-    {},
-    Date | null
+      Client.Prisma.PostMaxAggregateOutputType,
+      {},
+      Date | null
   >
 }
 
@@ -698,14 +698,14 @@ export type CommentCountAggregateOutputType = {
   postId?: Resolver<Client.Prisma.CommentCountAggregateOutputType, {}, number>
   authorId?: Resolver<Client.Prisma.CommentCountAggregateOutputType, {}, number>
   createdAt?: Resolver<
-    Client.Prisma.CommentCountAggregateOutputType,
-    {},
-    number
+      Client.Prisma.CommentCountAggregateOutputType,
+      {},
+      number
   >
   updatedAt?: Resolver<
-    Client.Prisma.CommentCountAggregateOutputType,
-    {},
-    number
+      Client.Prisma.CommentCountAggregateOutputType,
+      {},
+      number
   >
   _all?: Resolver<Client.Prisma.CommentCountAggregateOutputType, {}, number>
 }
@@ -715,14 +715,14 @@ export type CommentAvgAggregateOutputType = {
 } & {
   id?: Resolver<Client.Prisma.CommentAvgAggregateOutputType, {}, number | null>
   postId?: Resolver<
-    Client.Prisma.CommentAvgAggregateOutputType,
-    {},
-    number | null
+      Client.Prisma.CommentAvgAggregateOutputType,
+      {},
+      number | null
   >
   authorId?: Resolver<
-    Client.Prisma.CommentAvgAggregateOutputType,
-    {},
-    number | null
+      Client.Prisma.CommentAvgAggregateOutputType,
+      {},
+      number | null
   >
 }
 
@@ -731,14 +731,14 @@ export type CommentSumAggregateOutputType = {
 } & {
   id?: Resolver<Client.Prisma.CommentSumAggregateOutputType, {}, number | null>
   postId?: Resolver<
-    Client.Prisma.CommentSumAggregateOutputType,
-    {},
-    number | null
+      Client.Prisma.CommentSumAggregateOutputType,
+      {},
+      number | null
   >
   authorId?: Resolver<
-    Client.Prisma.CommentSumAggregateOutputType,
-    {},
-    number | null
+      Client.Prisma.CommentSumAggregateOutputType,
+      {},
+      number | null
   >
 }
 
@@ -747,29 +747,29 @@ export type CommentMinAggregateOutputType = {
 } & {
   id?: Resolver<Client.Prisma.CommentMinAggregateOutputType, {}, number | null>
   contain?: Resolver<
-    Client.Prisma.CommentMinAggregateOutputType,
-    {},
-    string | null
+      Client.Prisma.CommentMinAggregateOutputType,
+      {},
+      string | null
   >
   postId?: Resolver<
-    Client.Prisma.CommentMinAggregateOutputType,
-    {},
-    number | null
+      Client.Prisma.CommentMinAggregateOutputType,
+      {},
+      number | null
   >
   authorId?: Resolver<
-    Client.Prisma.CommentMinAggregateOutputType,
-    {},
-    number | null
+      Client.Prisma.CommentMinAggregateOutputType,
+      {},
+      number | null
   >
   createdAt?: Resolver<
-    Client.Prisma.CommentMinAggregateOutputType,
-    {},
-    Date | null
+      Client.Prisma.CommentMinAggregateOutputType,
+      {},
+      Date | null
   >
   updatedAt?: Resolver<
-    Client.Prisma.CommentMinAggregateOutputType,
-    {},
-    Date | null
+      Client.Prisma.CommentMinAggregateOutputType,
+      {},
+      Date | null
   >
 }
 
@@ -778,29 +778,29 @@ export type CommentMaxAggregateOutputType = {
 } & {
   id?: Resolver<Client.Prisma.CommentMaxAggregateOutputType, {}, number | null>
   contain?: Resolver<
-    Client.Prisma.CommentMaxAggregateOutputType,
-    {},
-    string | null
+      Client.Prisma.CommentMaxAggregateOutputType,
+      {},
+      string | null
   >
   postId?: Resolver<
-    Client.Prisma.CommentMaxAggregateOutputType,
-    {},
-    number | null
+      Client.Prisma.CommentMaxAggregateOutputType,
+      {},
+      number | null
   >
   authorId?: Resolver<
-    Client.Prisma.CommentMaxAggregateOutputType,
-    {},
-    number | null
+      Client.Prisma.CommentMaxAggregateOutputType,
+      {},
+      number | null
   >
   createdAt?: Resolver<
-    Client.Prisma.CommentMaxAggregateOutputType,
-    {},
-    Date | null
+      Client.Prisma.CommentMaxAggregateOutputType,
+      {},
+      Date | null
   >
   updatedAt?: Resolver<
-    Client.Prisma.CommentMaxAggregateOutputType,
-    {},
-    Date | null
+      Client.Prisma.CommentMaxAggregateOutputType,
+      {},
+      Date | null
   >
 }
 
@@ -838,14 +838,14 @@ export type GroupMinAggregateOutputType = {
   id?: Resolver<Client.Prisma.GroupMinAggregateOutputType, {}, number | null>
   name?: Resolver<Client.Prisma.GroupMinAggregateOutputType, {}, string | null>
   createdAt?: Resolver<
-    Client.Prisma.GroupMinAggregateOutputType,
-    {},
-    Date | null
+      Client.Prisma.GroupMinAggregateOutputType,
+      {},
+      Date | null
   >
   updatedAt?: Resolver<
-    Client.Prisma.GroupMinAggregateOutputType,
-    {},
-    Date | null
+      Client.Prisma.GroupMinAggregateOutputType,
+      {},
+      Date | null
   >
 }
 
@@ -855,14 +855,14 @@ export type GroupMaxAggregateOutputType = {
   id?: Resolver<Client.Prisma.GroupMaxAggregateOutputType, {}, number | null>
   name?: Resolver<Client.Prisma.GroupMaxAggregateOutputType, {}, string | null>
   createdAt?: Resolver<
-    Client.Prisma.GroupMaxAggregateOutputType,
-    {},
-    Date | null
+      Client.Prisma.GroupMaxAggregateOutputType,
+      {},
+      Date | null
   >
   updatedAt?: Resolver<
-    Client.Prisma.GroupMaxAggregateOutputType,
-    {},
-    Date | null
+      Client.Prisma.GroupMaxAggregateOutputType,
+      {},
+      Date | null
   >
 }
 

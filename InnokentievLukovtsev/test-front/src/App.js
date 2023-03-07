@@ -1,7 +1,8 @@
-import {useQuery, gql, useMutation} from "@apollo/client";
+import {useQuery, gql, useMutation, useLazyQuery} from "@apollo/client";
 import React, {useState} from "react";
 import Modal from "./modal/Modal";
 import "./styles.css";
+import prisma from "prisma/prisma-client/index-browser";
 
 const FIND_MANY_USER = gql`
   query FindManyUser {
@@ -21,10 +22,26 @@ const CREATE_ONE_USER = gql`
   }
 `;
 
+const GET_USER = gql`
+  query FindUniqueUser($where: UserWhereUniqueInput!) {
+    findUniqueUser(where: $where) {
+      id
+      name
+      email
+    }
+  }
+`;
+
 const App = () => {
     // const emailInputRef = useRef();
     // const nameInputRef = useRef();
     // const passwordInputRef = useRef();
+
+    // const email = emailInputRef.current.value;
+    // const name = nameInputRef.current.value;
+    // const password = passwordInputRef.current.value;
+
+    // const password = bcrypt.hashSync(input_password, "$2a$10$CwTycUXWue0Thq9StjUM0u");
 
     const [RegActive, setRegActive] = useState(false);
     const [ListActive, setListActive] = useState(false);
@@ -34,17 +51,26 @@ const App = () => {
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
 
-    // const email = emailInputRef.current.value;
-    // const name = nameInputRef.current.value;
-    // const password = passwordInputRef.current.value;
-
-    //const password = bcrypt.hashSync(input_password, "$2a$10$CwTycUXWue0Thq9StjUM0u");
-
     const {loading, error, data, refetch} = useQuery(FIND_MANY_USER);
+
     const [createUser, {
         data: dataCreateUser, loading: loadingCreateUser, error: errorCreateUser
     }] = useMutation(CREATE_ONE_USER);
-    console.log(data);
+
+    const [id, setId] = useState("")
+
+    function ggUs(id) {
+        const getUser = prisma.user.findMany({
+            where: {
+                id
+            }
+        }).then((getUser) => {
+            console.log(getUser)
+        })
+    }
+
+    const [GET_USER_ID, { loading: Userloading, error: Usererror, where: Userdata }] = useLazyQuery(GET_USER, {where: id})
+
     return (<div
         style={{
             display: "flex",
@@ -57,6 +83,7 @@ const App = () => {
         }}
     >
         <button className={"open-btn"} onClick={() => setRegActive(true)}> Registration</button>
+
         <Modal active={RegActive} setActive={setRegActive}>
             <div style={{
                 display: "flex",
@@ -141,6 +168,15 @@ const App = () => {
                 <button className={"open-btn"} style={{marginTop: 20, marginBottom: 25, width: 150}}>Log in</button>
             </div>
         </Modal>
+
+        <input style={{marginTop: 10}} placeholder={"Id"} onChange={(e) => {
+            setId(e.target.value)
+        }}/>
+        <button className={"open-btn"} style={{marginTop: 20, marginBottom: 25, width: 150}}
+                onClick={() => ggUs(id)}
+                >
+            Search
+        </button>
     </div>);
 };
 
