@@ -1,0 +1,28 @@
+.modaldiv {
+    display: flex;
+    alignItems: center;
+    justifyContent: center;
+    flexDirection: column;
+    background: white
+}
+
+.maindiv {
+    display: flex;
+    alignItems: center;
+    justifyContent: center;
+    width: 100%;
+    flexDirection: column;
+    height: 100vh;
+    background: grey;
+}
+
+.open-btn {
+    border-radius: 5px;
+    border: none;
+    box-shadow: 1px 1px 0px 1px;
+    background: rgb(141,217,252);
+    cursor: pointer;
+    margin-top: 10px;
+    width: auto;
+    height: 30px;
+}
