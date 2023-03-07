@@ -59,17 +59,7 @@ const App = () => {
 
     const [id, setId] = useState("")
 
-    function ggUs(id) {
-        const getUser = prisma.user.findMany({
-            where: {
-                id
-            }
-        }).then((getUser) => {
-            console.log(getUser)
-        })
-    }
-
-    const [GET_USER_ID, { loading: Userloading, error: Usererror, where: Userdata }] = useLazyQuery(GET_USER, {where: id})
+    const [getUser, {loading: Userloading, error: Usererror, where: Userdata}] = useLazyQuery(GET_USER)
 
     return (<div
         style={{
@@ -173,8 +163,18 @@ const App = () => {
             setId(e.target.value)
         }}/>
         <button className={"open-btn"} style={{marginTop: 20, marginBottom: 25, width: 150}}
-                onClick={() => ggUs(id)}
-                >
+                onClick={() => {
+                    getUser(
+                        {
+                            variables: {
+                                where: {
+                                    id: Number(id)
+                                }
+                            }
+                        }
+                    ).then(Userdata => console.log(Userdata)).catch(e => console.log(e))
+                }}
+        >
             Search
         </button>
     </div>);
