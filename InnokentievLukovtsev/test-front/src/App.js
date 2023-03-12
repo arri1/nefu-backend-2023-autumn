@@ -5,32 +5,41 @@ import "./styles.css";
 import prisma from "prisma/prisma-client/index-browser";
 
 const FIND_MANY_USER = gql`
-  query FindManyUser {
-    findManyUser {
-      email
-      id
-      password
+    query FindManyUser {
+        findManyUser {
+            email
+            id
+            password
+        }
     }
-  }
 `;
 
 const CREATE_ONE_USER = gql`
-  mutation CreateOneUser($data: UserCreateInput!) {
-    createOneUser(data: $data) {
-      id
+    mutation CreateOneUser($data: UserCreateInput!) {
+        createOneUser(data: $data) {
+            id
+        }
     }
-  }
 `;
 
 const GET_USER = gql`
-  query FindUniqueUser($where: UserWhereUniqueInput!) {
-    findUniqueUser(where: $where) {
-      id
-      name
-      email
+    query FindUniqueUser($where: UserWhereUniqueInput!) {
+        findUniqueUser(where: $where) {
+            id
+            name
+            email
+        }
     }
-  }
 `;
+
+const LOGIN_USER = gql`
+    query FindUniqueUser($where: UserWhereUniqueInput!){
+        findUniqueUser(where: $where){
+            email
+            password
+        }
+    }
+`
 
 const App = () => {
     // const emailInputRef = useRef();
@@ -48,6 +57,8 @@ const App = () => {
     const [SignActive, setSignActive] = useState(false);
 
     const [email, setEmail] = useState("");
+    const [loginEmail, setLoginEmail] = useState("");
+    const [loginPass, setLoginPass] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
 
@@ -60,6 +71,8 @@ const App = () => {
     const [id, setId] = useState("")
 
     const [getUser, {loading: Userloading, error: Usererror, where: Userdata}] = useLazyQuery(GET_USER)
+
+    const [loginUser, {loading: loginLoading, error:loginError, where: loginData}] = useLazyQuery(LOGIN_USER)
 
     return (<div
         style={{
@@ -150,12 +163,26 @@ const App = () => {
             }}>
                 <h1 style={{marginBottom: 20}}> Log In </h1>
 
-                {/*<input placeholder={"Email"} style={{ marginTop: 10 }} ref={emailInputRef} type="email" />*/}
-                {/*<input placeholder={"Password"} type={"password"}*/}
-                {/*       ref={passwordInputRef} type="password"*/}
-                {/*       style={{ marginTop: 10 }}*/}
-                {/*/>*/}
-                <button className={"open-btn"} style={{marginTop: 20, marginBottom: 25, width: 150}}>Log in</button>
+                <input placeholder={"Email"} onChange={(e) => setLoginEmail(e.target.value)} style={{ marginTop: 10 }} type="email" />
+                <input placeholder={"Password"} type={"password"} onChange={(e) => setLoginPass(e.target.value)} style={{ marginTop: 10 }} />
+                <button className={"open-btn"} style={{marginTop: 20, marginBottom: 25, width: 150}}
+                    onClick={() => {
+                            loginUser(
+                                {
+                                    variables: {
+                                        where: {
+                                            email: loginEmail
+                                        }
+                                    }
+                                }
+                            ).then((loginData) => {
+                                if (loginData.data.findUniqueUser.password === loginPass)
+                                    alert("User successfully logined")
+                                else
+                                    alert("you are oshibka")}).catch(e => console.log(e))
+                        }
+                    }
+                >Log in</button>
             </div>
         </Modal>
 
