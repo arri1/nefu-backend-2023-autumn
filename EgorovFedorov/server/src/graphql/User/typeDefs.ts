@@ -64,6 +64,8 @@ export default gql`
   }
 
   type Mutation {
+    signupUser(data: UserCreateInput!) : AuthPayLoad!
+    loginUser(data: UserLoginInput!): AuthPayLoad!
     createOneUser(data: UserCreateInput!): User!
     updateOneUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
     deleteOneUser(where: UserWhereUniqueInput!): User
@@ -77,5 +79,10 @@ export default gql`
       data: UserUpdateManyMutationInput!
       where: UserWhereInput
     ): BatchPayload
+  }
+  
+  type AuthPayLoad {
+    token: String
+    user: User
   }
 `

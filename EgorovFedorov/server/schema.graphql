@@ -270,6 +270,11 @@ input UserCreateInput {
   comments: CommentCreateNestedManyWithoutAuthorInput
 }
 
+input UserLoginInput {
+  email: String!
+  password: String!
+}
+
 input UserUncheckedCreateInput {
   id: Int
   createdAt: DateTime
@@ -1907,6 +1912,8 @@ type Query {
 }
 
 type Mutation {
+  signupUser(data: UserCreateInput!): AuthPayLoad!
+  loginUser(data: UserLoginInput!): AuthPayLoad!
   createOneUser(data: UserCreateInput!): User!
   updateOneUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
   deleteOneUser(where: UserWhereUniqueInput!): User
@@ -1931,6 +1938,11 @@ type Mutation {
   upsertOneGroup(where: GroupWhereUniqueInput!, create: GroupCreateInput!, update: GroupUpdateInput!): Group
   deleteManyGroup(where: GroupWhereInput): BatchPayload
   updateManyGroup(data: GroupUpdateManyMutationInput!, where: GroupWhereInput): BatchPayload
+}
+
+type AuthPayLoad {
+  token: String
+  user: User
 }
 
 type Post {

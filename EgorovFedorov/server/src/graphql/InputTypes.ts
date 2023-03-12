@@ -271,6 +271,11 @@ export default gql`
     group: GroupCreateNestedOneWithoutUsersInput
     comments: CommentCreateNestedManyWithoutAuthorInput
   }
+  
+  input UserLoginInput {
+    email: String!
+    password: String!
+  }
 
   input UserUncheckedCreateInput {
     id: Int

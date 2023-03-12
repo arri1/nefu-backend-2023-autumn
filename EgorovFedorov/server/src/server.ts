@@ -33,7 +33,7 @@ schema = applyMiddleware(schema, middleware);
 
 const server = new ApolloServer({
   schema,
-  context: createContext,
+  context: ({req}) => createContext(req)
 });
 
 server.listen().then(({ url }) => {
