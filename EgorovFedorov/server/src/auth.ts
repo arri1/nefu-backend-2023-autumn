@@ -4,14 +4,14 @@ import { ParamsDictionary } from "express-serve-static-core";
 import { JwtPayload, verify } from "jsonwebtoken";
 import { ParsedQs } from "qs";
 
-export const APP_SECRET = "you-will-never-guess"; // TODO: move to .env
+export const APP_SECRET = process.env.APP_SECRET;
 
 export async function authenticateUser(
   prisma: PrismaClient,
   req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>
 ) {
   const body = req.body.query;
-  const whitelist = ["LoginUser", "SignupUser"]; // TODO: move to .env
+  const whitelist = process.env.WHITELIST.split(" ");
   const isInWhitelist = whitelist.some((item) => body.includes(item));
 
   const header = req.headers.authorization;
