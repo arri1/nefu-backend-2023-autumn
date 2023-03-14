@@ -2,7 +2,7 @@ import { PrismaClient, User } from "@prisma/client";
 import { Request } from "express";
 import { ParamsDictionary } from "express-serve-static-core";
 import { ParsedQs } from "qs";
-import {authenticateUser} from "./auth";
+import { authenticateUser } from "./auth";
 
 const prisma = new PrismaClient();
 
@@ -15,5 +15,11 @@ export async function createContext(req: Request<ParamsDictionary, any, any, Par
   return {
     prisma,
     currentUser: await authenticateUser(prisma, req),
+  };
+}
+
+export async function createContextForTgBot() {
+  return {
+    prisma
   };
 }
