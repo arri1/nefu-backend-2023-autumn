@@ -1,0 +1,28 @@
+version: '1.0'
+services:
+#  client:
+#    build:
+#      context: .
+#      dockerfile: client/Dockerfile
+#    ports:
+#      - ''
+#    environment:
+#
+#    restart: on-failure
+#  server:
+#    build:
+#      context: .
+#      dockerfile: server/Dockerfile
+#    links:
+#      - postgres
+#    ports:
+#      - ''
+#    environment:
+#
+#    restart: on-failure
+  postgres:
+    image: 'postgres'
+    ports:
+      - '0.0.0.0:5432:5432'
+    environment:
+      POSTGRES_PASSWORD: Qwerty123!
