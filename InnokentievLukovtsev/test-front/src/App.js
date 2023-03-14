@@ -13,7 +13,6 @@ const FIND_MANY_USER = gql`
         }
     }
 `;
-
 const CREATE_ONE_USER = gql`
     mutation CreateOneUser($data: UserCreateInput!) {
         createOneUser(data: $data) {
