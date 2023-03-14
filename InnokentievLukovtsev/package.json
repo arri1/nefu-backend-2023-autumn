@@ -1,0 +1,49 @@
+{
+  "name": "innokentievlukovtsev",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "description": "We added `sqlite` as db provider in `schema.prisma` you can change it to your custom db provider",
+  "scripts": {
+    "start": "nodemon src/server.ts",
+    "clean": "rm -rf dist",
+    "build": "npm -s run clean && npm -s run generate && tsc",
+    "generate": "pal g && prisma generate",
+    "db-dev": "prisma migrate dev",
+    "dev": "ts-node-dev --no-notify --respawn --transpile-only src/server"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.7.9",
+    "@graphql-tools/merge": "8.3.18",
+    "@graphql-tools/schema": "9.0.16",
+    "@paljs/plugins": "5.2.0",
+    "@prisma/client": "4.10.1",
+    "apollo-server": "3.11.1",
+    "assert": "^2.0.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "graphql": "16.6.0",
+    "graphql-middleware": "6.1.33",
+    "node-telegram-bot-api": "^0.61.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1",
+    "stream-browserify": "^3.0.0"
+  },
+  "devDependencies": {
+    "@paljs/cli": "5.2.0",
+    "@types/node": "18.14.0",
+    "nodemon": "^2.0.20",
+    "prettier": "2.8.4",
+    "prisma": "4.10.1",
+    "ts-node": "10.9.1",
+    "ts-node-dev": "2.0.0",
+    "typescript": "4.9.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "-"
+  },
+  "author": "Innokentiev-V-Lukovtsev-A",
+  "keywords": []
+}
