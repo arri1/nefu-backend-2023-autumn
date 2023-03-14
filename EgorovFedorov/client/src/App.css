@@ -1,3 +1,8 @@
+@font-face {
+  font-family: Gagalin;
+  src: url(./font/main/Gagalin.ttf);
+}
+
 .App {
   text-align: center;
 }
@@ -11,6 +16,56 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+  body{
+    background-color: #141414;
+  }
+  .mainbar{
+    background-color: #292929;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    padding: 32px 24px;
+    border-radius: 12px;
+    font-family: var(--palette-vk-font,-apple-system,BlinkMacSystemFont,'Roboto','Helvetica Neue',Geneva,"Noto Sans Armenian","Noto Sans Bengali","Noto Sans Cherokee","Noto Sans Devanagari","Noto Sans Ethiopic","Noto Sans Georgian","Noto Sans Hebrew","Noto Sans Kannada","Noto Sans Khmer","Noto Sans Lao","Noto Sans Osmanya","Noto Sans Tamil","Noto Sans Telugu","Noto Sans Thai",arial,Tahoma,verdana,sans-serif);
+    line-height: 1.154;
+    font-weight: 400;
+    width: 320px;
+    border-width: 0px;
+  }
+  .textbox{
+    width: 100%;
+    height: 36px;
+    box-sizing: border-box;
+    padding: 8px 12px;
+    line-height: 20px;
+    border-radius: 8px;
+    background-color: #333333;
+    margin-top: 20px;
+    color: white;
+    border-width: 0px;
+  }
+  .butIn{
+    background-color: white !important;
+    color: black !important;
+    margin-top: 30px;
+  }
+  .downBar{
+    margin-top: 50px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 400;
+    color: #656565;
+  }
+  .butOut{
+    margin-top: 0px !important;
+    background-color: #4bb34b !important;
+    color: white !important;
+    border-width: 0px;
+  }
+  .logo{
+    font-family: Gagalin;
+    font-size: 70px;
+  }
 }
 
 .App-header {
@@ -20,7 +75,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /*font-size: calc(10px + 2vmin);*/
   color: white;
 }
 
