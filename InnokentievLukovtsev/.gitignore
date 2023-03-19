@@ -1,6 +1,2 @@
 node_modules
 .idea
-yarn.lock
-dist
-src/generated
-prisma/.env
