@@ -1,0 +1,28 @@
+.Header {
+  background-color: #31508d;
+  min-height: 5vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  width: 100%;
+}
+
+.Logo {
+  width: 33.3%;
+  display: flex;
+  justify-content: center;
+}
+
+.Header-text {
+  width: 33.3%;
+  display: flex;
+  justify-content: center;
+}
+
+.Sidebar {
+  width: 33.3%;
+  display: flex;
+  justify-content: center;
+}
