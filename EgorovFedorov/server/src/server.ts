@@ -6,6 +6,7 @@ import { createContext, Context } from "./context";
 import typeDefs from "./graphql/typeDefs";
 import resolvers from "./graphql/resolvers";
 import { GraphQLResolveInfo } from "graphql";
+import { TgBot } from "./tgBot";
 
 let schema = makeExecutableSchema({ typeDefs, resolvers });
 
@@ -31,9 +32,11 @@ const middleware = async (
 
 schema = applyMiddleware(schema, middleware);
 
+const tgBot = new TgBot();
+
 const server = new ApolloServer({
   schema,
-  context: ({req}) => createContext(req)
+  context: ({ req }) => createContext(req)
 });
 
 server.listen().then(({ url }) => {
