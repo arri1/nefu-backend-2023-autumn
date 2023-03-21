@@ -1,25 +1,23 @@
-import logo from "../../logo.svg";
-import "./Main.css";
+import React from "react";
 
-function Main() {
+const SignUp = () => {
   return (
-    <div className="Main">
+    <div>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <form className="form">
           <label className="input-login">
             login:
             <input type="text" name="login" />
           </label>
-          <label className="input-parol">
-            parol:
-            <input type="text" name="parol" />
+          <label className="input-password">
+            password:
+            <input type="text" name="password" />
           </label>
           <input className="submit" type="submit" value="Отправить" />
         </form>
       </header>
     </div>
   );
-}
+};
 
-export default Main;
+export default SignUp;
