@@ -21,7 +21,9 @@
     "@prisma/client": "4.11.0",
     "apollo-server": "^3.12.0",
     "graphql": "16.6.0",
-    "graphql-middleware": "6.1.33"
+    "graphql-middleware": "6.1.33",
+    "node-telegram-bot-api": "^0.61.0",
+    "sqlite-sync": "^0.3.9"
   },
   "devDependencies": {
     "@paljs/cli": "5.2.0",
