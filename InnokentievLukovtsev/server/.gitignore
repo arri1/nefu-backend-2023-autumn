@@ -1,0 +1,4 @@
+yarn.lock
+dist
+src/generated
+prisma/.env
