@@ -34,21 +34,13 @@ const App = () => {
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
 
-    const { loading, error, data, refetch } = useQuery(FIND_MANY_USER);
-    const [
-        createUser,
-        {
-            data: dataCreateUser,
-            loading: loadingCreateUser,
-            error: errorCreateUser,
-        },
-    ] = useMutation(CREATE_ONE_USER);
+    const { loading, data, refetch } = useQuery(FIND_MANY_USER);
+    const [createUser, { data: dataCreateUser, loading: loadingCreateUser }] =
+        useMutation(CREATE_ONE_USER);
     console.log(data);
 
-    const [
-        loginUser,
-        { loading: loginLoading, error: loginError, where: loginData },
-    ] = useLazyQuery(LOGIN_USER);
+    const [loginUser, { loading: loginLoading, where: loginData }] =
+        useLazyQuery(LOGIN_USER);
 
     return (
         <div
@@ -111,7 +103,7 @@ const App = () => {
                                                 alert(
                                                     "User successfully logined"
                                                 );
-                                            else alert("you are oshibka");
+                                            else alert("error");
                                         })
                                         .catch((e) => console.log(e));
                                 }}
