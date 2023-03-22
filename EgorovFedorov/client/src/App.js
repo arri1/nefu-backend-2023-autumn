@@ -1,7 +1,9 @@
 import { useQuery, gql, useMutation } from "@apollo/client";
 import { useState } from "react";
 import './App.css';
-
+import { BrowserRouter as Router, Routes } from 'react-router-dom';
+import { LoginRoute } from "./components/LoginRoute";
+import Login from "./layouts/login";
 const FIND_MANY_USER = gql`
   query FindManyUser {
     findManyUser {
@@ -40,73 +42,12 @@ const App = () => {
   ] = useMutation(CREATE_ONE_USER);
   console.log(data);
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        width: "100%",
-        flexDirection: "column",
-        height: "100vh",
-
-      }}
-    >
-
-      <div className="mainbar">
-        {/*<div className="logo">АБЭ</div>*/}
-        <p style={{fontWeight: "500"}}>Вход в соц. сети</p>
-        <input
-          className="textbox"
-          placeholder="Почта"
-          value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input
-          className="textbox"
-          placeholder="Пароль"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          // style={{ marginTop: 10 }}
-        />
-        <button
-          className="textbox butIn"
-          // style={{ marginTop: 10, width: 100, height: 30 }}
-          onClick={() => {
-            createUser({
-              variables: {
-                data: {
-                  email,
-                  password,
-                },
-              },
-            })
-              .then((data) => {
-                console.log(data);
-                refetch();
-                alert("user create");
-              })
-              .catch((e) => {
-                alert(e.message);
-              });
-          }}
-        >
-          Войти
-        </button>
-        {/*<p style={{paddingTop: 40}}>Пользователи</p>*/}
-        {/*<div style={{ marginTop: 20}}>*/}
-        {/*  {!loading &&*/}
-        {/*    data?.findManyUser?.map((item) => {*/}
-        {/*      return <div key={item.id}>{item.email}</div>;*/}
-        {/*    })}*/}
-        {/*</div>*/}
-      </div>
-      <div className="mainbar downBar">
-        <button
-          className="textbox butIn butOut">
-          Зарегистрироваться
-        </button>
-        <p>После регистрации вы получите доступ ко всем возможностям нашей соц. сети</p>
-      </div>
-
-    </div>
+      <Router>
+        <Routes>
+          <LoginRoute path="/login" component={Login} />
+          {/*<ProtectedRoute path="/" component={Main} />*/}
+        </Routes>
+      </Router>
   );
 };
 
