@@ -1,6 +1,11 @@
 import { useQuery, gql, useMutation } from "@apollo/client";
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import './App.css';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { LoginRoute } from "./components/LoginRoute";
+import Login from "./layouts/login";
+import Reg from "./layouts/reg";
+import { setUser } from "./redux/action";
 
 const FIND_MANY_USER = gql`
   query FindManyUser {
@@ -39,74 +44,19 @@ const App = () => {
     },
   ] = useMutation(CREATE_ONE_USER);
   console.log(data);
+
+  // useEffect(() => {
+  //   if(localStorage.getItem('accessToken') !== null) {
+  //     props.setUser(localStorage.getItem('login'))
+  //   }
+  // }, [])
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        width: "100%",
-        flexDirection: "column",
-        height: "100vh",
-
-      }}
-    >
-
-      <div className="mainbar">
-        {/*<div className="logo">АБЭ</div>*/}
-        <p style={{fontWeight: "500"}}>Вход в соц. сети</p>
-        <input
-          className="textbox"
-          placeholder="Почта"
-          value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input
-          className="textbox"
-          placeholder="Пароль"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          // style={{ marginTop: 10 }}
-        />
-        <button
-          className="textbox butIn"
-          // style={{ marginTop: 10, width: 100, height: 30 }}
-          onClick={() => {
-            createUser({
-              variables: {
-                data: {
-                  email,
-                  password,
-                },
-              },
-            })
-              .then((data) => {
-                console.log(data);
-                refetch();
-                alert("user create");
-              })
-              .catch((e) => {
-                alert(e.message);
-              });
-          }}
-        >
-          Войти
-        </button>
-        {/*<p style={{paddingTop: 40}}>Пользователи</p>*/}
-        {/*<div style={{ marginTop: 20}}>*/}
-        {/*  {!loading &&*/}
-        {/*    data?.findManyUser?.map((item) => {*/}
-        {/*      return <div key={item.id}>{item.email}</div>;*/}
-        {/*    })}*/}
-        {/*</div>*/}
-      </div>
-      <div className="mainbar downBar">
-        <button
-          className="textbox butIn butOut">
-          Зарегистрироваться
-        </button>
-        <p>После регистрации вы получите доступ ко всем возможностям нашей соц. сети</p>
-      </div>
-
-    </div>
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<Login/>} />
+        <Route exact path="/reg" element={<Reg/>} />
+      </Routes>
+    </Router>
   );
 };
 
