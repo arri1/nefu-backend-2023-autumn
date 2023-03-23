@@ -1,9 +1,12 @@
 import { useQuery, gql, useMutation } from "@apollo/client";
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import './App.css';
-import { BrowserRouter as Router, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { LoginRoute } from "./components/LoginRoute";
 import Login from "./layouts/login";
+import Reg from "./layouts/reg";
+import { setUser } from "./redux/action";
+
 const FIND_MANY_USER = gql`
   query FindManyUser {
     findManyUser {
@@ -41,13 +44,19 @@ const App = () => {
     },
   ] = useMutation(CREATE_ONE_USER);
   console.log(data);
+
+  // useEffect(() => {
+  //   if(localStorage.getItem('accessToken') !== null) {
+  //     props.setUser(localStorage.getItem('login'))
+  //   }
+  // }, [])
   return (
-      <Router>
-        <Routes>
-          <LoginRoute path="/login" component={Login} />
-          {/*<ProtectedRoute path="/" component={Main} />*/}
-        </Routes>
-      </Router>
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<Login/>} />
+        <Route exact path="/reg" element={<Reg/>} />
+      </Routes>
+    </Router>
   );
 };
 

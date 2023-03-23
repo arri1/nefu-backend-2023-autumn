@@ -1,6 +1,6 @@
 import { useQuery, gql, useMutation } from "@apollo/client";
 import { useState } from "react";
-import { Route, useLocation, useNavigate  } from "react-router-dom";
+import { Route, useLocation, useNavigate } from "react-router-dom";
 
 const FIND_MANY_USER = gql`
   query FindManyUser {
@@ -35,27 +35,25 @@ const LoginUser = gql`
   }
 `;
 
-
-const Login = () =>{
+const Reg = () =>{
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const { loading, error, data, refetch } = useQuery(FIND_MANY_USER);
   const [
-    loginUser,
+    CreateUser,
     {
       data: dataCreateUser,
       loading: loadingCreateUser,
       error: errorCreateUser,
     },
-  ] = useMutation(LoginUser);
+  ] = useMutation(CREATE_ONE_USER);
 
-  console.log(data);
   const navigate = useNavigate();
-  const rega = () =>{
-    navigate('/reg');
+  const login = () =>{
+    navigate('/');
   }
-
+  console.log(data);
   return(
     <div
       style={{
@@ -71,7 +69,7 @@ const Login = () =>{
 
       <div className="mainbar">
         {/*<div className="logo">АБЭ</div>*/}
-        <p style={{fontWeight: "500"}}>Вход в соц. сети</p>
+        <p style={{fontWeight: "500"}}>Регистрация в соц. сети</p>
         <input
           className="textbox"
           placeholder="Почта"
@@ -87,7 +85,7 @@ const Login = () =>{
           className="textbox butIn"
           // style={{ marginTop: 10, width: 100, height: 30 }}
           onClick={() => {
-            loginUser({
+            CreateUser({
               variables: {
                 data: {
                   email,
@@ -99,34 +97,19 @@ const Login = () =>{
                 console.log(data);
                 refetch();
                 alert(email);
+                login();
               })
               .catch((e) => {
                 alert(e.message);
               });
           }}
+
         >
           Войти
         </button>
-        {/*<p style={{paddingTop: 40}}>Пользователи</p>*/}
-        {/*<div style={{ marginTop: 20}}>*/}
-        {/*  {!loading &&*/}
-        {/*    data?.findManyUser?.map((item) => {*/}
-        {/*      return <div key={item.id}>{item.email}</div>;*/}
-        {/*    })}*/}
-        {/*</div>*/}
       </div>
-      <div className="mainbar downBar">
-        <button
-          className="textbox butIn butOut"
-          onClick={rega}
-        >
-          Зарегистрироваться
-        </button>
-        <p>После регистрации вы получите доступ ко всем возможностям нашей соц. сети</p>
-      </div>
-
     </div>
   );
 };
 
-export default Login;
+export default Reg;
