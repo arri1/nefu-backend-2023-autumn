@@ -92,7 +92,9 @@ const Login = () =>{
               .catch((e) => {
                 // alert(e.message);
               });
-          window.location.reload(false);
+
+            localStorage.setItem('email', email);
+            window.location.reload();
           }}
         >
           Войти

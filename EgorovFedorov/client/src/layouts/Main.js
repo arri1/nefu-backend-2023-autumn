@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Route, useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Navigate, Route, useLocation, useNavigate } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 
 const FIND_MANY_USER = gql`
@@ -17,9 +17,13 @@ const Main = () =>{
   const [password, setPassword] = useState("");
   const { loading, error, data, refetch } = useQuery(FIND_MANY_USER);
   const navigate = useNavigate();
-  const login = () =>{
-    navigate('/');
-  }
+
+  useEffect(() => {
+    if(localStorage.getItem('accessToken') == null) {
+      navigate("/");
+    }
+  }, [])
+
   return(
     <div
       style={{
@@ -34,16 +38,11 @@ const Main = () =>{
     >
 
       <div className="mainbar">
-        <p style={{fontWeight: "500"}}>Главная страница</p>
-        <p style={{paddingTop: 40}}>Пользователи</p>
-        <div style={{ marginTop: 20}}>
-          {!loading &&
-            data?.findManyUser?.map((item) => {
-              return <div key={item.id}>{item.email}</div>;
-            })}
-        </div>
+        <p style={{fontWeight: "500"}}>Добро пожаловать, {localStorage.getItem('email')}</p>
       </div>
-      <button onClick={()=>{localStorage.removeItem('accessToken')}}>Выход</button>
+      <button onClick={()=>{
+        localStorage.removeItem('accessToken');
+        window.location.reload();}}>Выход</button>
     </div>
   );
 };
