@@ -24,16 +24,6 @@ const CREATE_ONE_USER = gql`
 }
 `;
 
-const LoginUser = gql`
-  mutation LoginUser($data: UserLoginInput!) {
-    loginUser(data: $data){
-      user{
-        email
-        password
-      }
-    }
-  }
-`;
 
 const Reg = () =>{
   const [email, setEmail] = useState("");
@@ -79,11 +69,9 @@ const Reg = () =>{
           placeholder="Пароль"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          // style={{ marginTop: 10 }}
         />
         <button
           className="textbox butIn"
-          // style={{ marginTop: 10, width: 100, height: 30 }}
           onClick={() => {
             CreateUser({
               variables: {
@@ -102,10 +90,8 @@ const Reg = () =>{
               .catch((e) => {
                 alert(e.message);
               });
-          }}
-
-        >
-          Войти
+          }}>
+          Зарегистрироваться
         </button>
       </div>
     </div>

@@ -11,18 +11,6 @@ const FIND_MANY_USER = gql`
     }
   }
 `;
-const CREATE_ONE_USER = gql`
-  mutation SignupUser($data: UserCreateInput!) {
-  signupUser(data: $data) {
-    token
-    user {
-      id
-      email
-      password
-    }
-  }
-}
-`;
 
 const LoginUser = gql`
   mutation LoginUser($data: UserLoginInput!) {
@@ -87,6 +75,7 @@ const Login = () =>{
           className="textbox butIn"
           // style={{ marginTop: 10, width: 100, height: 30 }}
           onClick={() => {
+            localStorage.setItem('accessToken', loginUser.token);
             loginUser({
               variables: {
                 data: {
@@ -98,11 +87,14 @@ const Login = () =>{
               .then((data) => {
                 console.log(data);
                 refetch();
-                alert(email);
+                // alert(email);
               })
               .catch((e) => {
-                alert(e.message);
+                // alert(e.message);
               });
+
+            localStorage.setItem('email', email);
+            window.location.reload();
           }}
         >
           Войти
