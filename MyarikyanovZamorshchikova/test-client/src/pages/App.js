@@ -136,22 +136,6 @@ const App = () => {
       </div>
     </div>
   );
-
-  return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        width: "100%",
-        flexDirection: "column",
-        height: "100vh",
-      }}
-    >
-      
-      
-    </div>
-  );
 };
 
 export default App;
