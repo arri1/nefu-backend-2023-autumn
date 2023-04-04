@@ -2,8 +2,7 @@ import React from "react";
 
 const SignUp = () => {
   return (
-    <div>
-      <header className="App-header">
+      <div className="App-header">
         <form className="form">
           <label className="input-login">
             login:
@@ -15,8 +14,7 @@ const SignUp = () => {
           </label>
           <input className="submit" type="submit" value="Отправить" />
         </form>
-      </header>
-    </div>
+      </div>
   );
 };
 

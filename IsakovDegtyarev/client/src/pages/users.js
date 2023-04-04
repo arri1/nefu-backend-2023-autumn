@@ -2,8 +2,7 @@ import React from "react";
 
 const Users = () => {
   return (
-    <div>
-      <header className="App-header">
+      <div className="App-header">
         <form className="form">
           <label className="input-login">
             Users:
@@ -11,8 +10,7 @@ const Users = () => {
           </label>
           <input className="submit" type="submit" value="Обновить" />
         </form>
-      </header>
-    </div>
+      </div>
   );
 };
 
