@@ -15,16 +15,14 @@ import lombok.EqualsAndHashCode;
  * @author lebedkin_ak
  */
 @Data
-@EqualsAndHashCode
 @Entity
 @Table(name="Users")
 public class User implements Serializable {
     @Id
     @Column(name = "ID", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column(name = "created_at")
-    private LocalDate createdAt;
+    private String createdAt;
     @Column(name = "email")
     private String email;
     @Column(name = "name", nullable = false)

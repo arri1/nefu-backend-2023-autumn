@@ -1,9 +1,9 @@
 type User {
     id: ID!,
-    createdAt: String!,
-    email: String!,
+    createdAt: String,
+    email: String,
     name: String,
-    password: String!
+    password: String
 }
 type Query {
     users(count: Int):[User]
