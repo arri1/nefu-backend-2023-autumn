@@ -1,6 +1,6 @@
 const TelegramApi = require("node-telegram-bot-api");
 const { createContext } = require("../context");
-const confing = require("./confing.json");
+const confing = require("./config.json");
 
 const token = confing.token;
 
