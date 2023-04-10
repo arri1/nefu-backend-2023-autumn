@@ -23,10 +23,10 @@ services:
       dockerfile: ./server/Dockerfile
     ports:
       - '4000:4000'
-    networks:
-      - app-network
     volumes:
       - ./server:/usr/src/nefu_server
+    networks:
+      - app-network
 volumes:
   dbdata:
   server:
