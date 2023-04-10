@@ -5,9 +5,8 @@ WORKDIR /usr/src/nefu_server
 COPY ./server/package*.json ./
 
 RUN npm install
-
 RUN npx prisma generate
 
-COPY ./server/ ./
+COPY . .
 
 CMD ["npm", "run", "dev"]
