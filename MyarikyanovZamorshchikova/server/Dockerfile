@@ -1,12 +1,13 @@
+
 FROM node:lts
 
-WORKDIR /usr/src/nefu_server
+WORKDIR /usr/src/server
 
-COPY ./server/package*.json ./
+COPY ./server ./
 
+RUN apt-get -y update
+RUN apt-get -y install git
 RUN npm install
 RUN npx prisma generate
-
-COPY . .
 
 CMD ["npm", "run", "dev"]
