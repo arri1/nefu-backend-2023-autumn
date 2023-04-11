@@ -6,6 +6,7 @@ import { createContext, Context } from "./context";
 import typeDefs from "./graphql/typeDefs";
 import resolvers from "./graphql/resolvers";
 import { GraphQLResolveInfo } from "graphql";
+import cors from "cors";
 
 let schema = makeExecutableSchema({ typeDefs, resolvers });
 
@@ -13,29 +14,33 @@ let schema = makeExecutableSchema({ typeDefs, resolvers });
 generateGraphQlSDLFile(schema);
 
 const middleware = async (
-  resolve,
-  root,
-  args,
-  context: Context,
-  info: GraphQLResolveInfo
+    resolve,
+    root,
+    args,
+    context: Context,
+    info: GraphQLResolveInfo
 ) => {
-  const result = new PrismaSelect(info).value;
-  if (!result.select || Object.keys(result.select).length > 0) {
-    args = {
-      ...args,
-      ...result,
-    };
-  }
-  return resolve(root, args, context, info);
+    const result = new PrismaSelect(info).value;
+    if (!result.select || Object.keys(result.select).length > 0) {
+        args = {
+            ...args,
+            ...result,
+        };
+    }
+    return resolve(root, args, context, info);
 };
 
 schema = applyMiddleware(schema, middleware);
 
 const server = new ApolloServer({
-  schema,
-  context: createContext,
+    schema,
+    context: createContext,
+    cors: {
+        origin: "http://localhost:3000",
+        credentials: true,
+    },
 });
 
 server.listen().then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`);
+    console.log(`🚀  Server ready at ${url}`);
 });
