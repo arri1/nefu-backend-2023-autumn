@@ -28,9 +28,25 @@ services:
             - /usr/src/server/node_modules
         networks:
             - app-network
+    test-client:
+        container_name: test-client
+        build:
+            context: ./
+            dockerfile: ./test-client/Dockerfile
+        ports:
+            - '3000:3000'
+        volumes:
+            - ./test-client:/usr/src/test-client
+            - /usr/src/test-client/node_modules
+        depends_on:
+            - nefu_server
+        networks:
+            - app-network
+
 volumes:
     dbdata:
     server:
+    test-client:
 
 networks:
     app-network:
