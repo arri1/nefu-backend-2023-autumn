@@ -4,8 +4,6 @@ services:
         image: postgres:14.6
         restart: unless-stopped
         container_name: nefu_db
-        ports:
-            - "4265:5432"
         environment:
             - POSTGRES_DB=nefu_backend
             - POSTGRES_USER=postgres
