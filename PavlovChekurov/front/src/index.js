@@ -9,7 +9,7 @@ import {
 } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: "http://158.160.24.210:4001/",
+  uri: "http://158.160.24.210:4000/",
   cache: new InMemoryCache(),
 });
 const root = ReactDOM.createRoot(document.getElementById("root"));
