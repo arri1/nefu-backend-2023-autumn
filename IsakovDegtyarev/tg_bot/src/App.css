@@ -1,0 +1,15 @@
+body {
+  background-color: rgb(19, 19, 52);
+  color: #fff;
+}
+
+.cards__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.heading {
+  text-align: center;
+}
