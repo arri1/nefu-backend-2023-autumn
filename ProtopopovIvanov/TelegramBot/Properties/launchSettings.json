@@ -1,0 +1,14 @@
+﻿{
+  "profiles": {
+    "TelegramBot": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "graphql-ui",
+      "applicationUrl": "http://[::]:80",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
