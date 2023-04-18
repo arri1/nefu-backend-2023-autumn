@@ -332,6 +332,11 @@ const App = () => {
       >
         Save changes
       </button>
+      <a href={'https://web.telegram.org/z/#6267362105'}>
+          <img style={{width:50, height: 50, marginTop: 20}}
+               src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/2048px-Telegram_2019_Logo.svg.png"
+          />
+      </a>
     </div>
   );
 };
