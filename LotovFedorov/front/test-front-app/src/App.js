@@ -60,6 +60,7 @@ const App = () => {
 				<div className="content">
 					<div className="regLog">
 						<div
+						
 							style={{
 								display: "flex",
 								alignItems: "center",
@@ -163,7 +164,7 @@ const App = () => {
 											console.log(data);
 											refetch();
 											alert(
-												"User successfully registered"
+												"Пользователь зарегистрировался"
 											);
 										})
 										.catch((e) => {

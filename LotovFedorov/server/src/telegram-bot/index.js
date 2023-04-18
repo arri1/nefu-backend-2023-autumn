@@ -9,18 +9,19 @@ const bot = new TelegramApi(token, { polling: true });
 bot.on("message", async (msg) => {
 	const text = msg.text;
 	const chatId = msg.chat.id;
+	const user = msg.first_name;
 	if (text === "/start") {
 		await bot.sendSticker(
 			chatId,
 			"https://cdn.tlgrm.app/stickers/2ff/69a/2ff69ac2-b557-41d1-8b15-4cd27230b8c8/96/1.webp"
 		);
-		await bot.sendMessage(chatId, `Вы добро пожаловать на наш бот`);
+		await bot.sendMessage(chatId, `Добро пожаловать на наш бот, чтобы узнать команды напиши /help`);
 	}
 
 	if (text === "/info") {
 		await bot.sendMessage(
 			chatId,
-			`Меня разработали Лотов и Федров из группы М-ИВТ-21`
+			`Меня разработали Лотов и Федоров из группы М-ИВТ-21`
 		);
 	}
 
@@ -46,6 +47,7 @@ bot.on("message", async (msg) => {
 });
 
 bot.onText(/\/reg (.+)/, async (msg, match) => {
+	
 	let context = createContext();
 	const chatId = msg.chat.id;
 	const response = match[0].split(" ");
@@ -59,5 +61,5 @@ bot.onText(/\/reg (.+)/, async (msg, match) => {
 			password: pass,
 		},
 	});
-	await bot.sendMessage(chatId, "user " + name + " created");
+	await bot.sendMessage(chatId, "Пользователь " + name + " создан");
 });
