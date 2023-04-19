@@ -17,7 +17,6 @@ import Login from "../layouts/login";
 const LoginA=()=>{
   const token=localStorage.getItem('accessToken')
   if (token){
-    console.log("YES");
     return true
   } else{
     return false

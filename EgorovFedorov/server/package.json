@@ -11,7 +11,8 @@
     "build": "npm -s run clean && npm -s run generate && tsc",
     "generate": "pal g && prisma generate",
     "db-dev": "prisma migrate dev",
-    "dev": "ts-node-dev --no-notify --respawn --transpile-only server/src/server"
+    "dev": "ts-node-dev --no-notify --respawn --transpile-only server/src/server",
+    "start:migrate:prod": "prisma migrate deploy && npm run start"
   },
   "dependencies": {
     "@graphql-tools/merge": "8.3.18",
@@ -20,12 +21,14 @@
     "@prisma/client": "4.10.1",
     "apollo-server": "3.11.1",
     "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "fastify": "^4.14.0",
     "graphql": "16.6.0",
     "graphql-middleware": "6.1.33",
     "jsonwebtoken": "^9.0.0",
     "node-telegram-bot-api": "^0.61.0",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "ts-node": "10.9.1"
   },
   "devDependencies": {
     "@paljs/cli": "^5.2.0",

@@ -9,8 +9,11 @@ import {
 } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000",
+  uri: "http://84.252.136.9:4000/",
   cache: new InMemoryCache(),
+  fetchOptions: {
+    mode: 'no-cors',
+  },
 });
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

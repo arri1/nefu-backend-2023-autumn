@@ -1,70 +1,50 @@
 import { useQuery, gql, useMutation } from "@apollo/client";
 import { useState } from "react";
-import { Route, useLocation, useNavigate  } from "react-router-dom";
-
-const FIND_MANY_USER = gql`
-  query FindManyUser {
-    findManyUser {
-      email
-      id
-      password
-    }
-  }
-`;
+import { Route, useLocation, useNavigate } from "react-router-dom";
 
 const LoginUser = gql`
-  mutation LoginUser($data: UserLoginInput!) {
-    loginUser(data: $data){
-      user{
-        email
-        password
-      }
+    mutation LoginUser($data: UserLoginInput!) {
+        loginUser(data: $data){
+            token
+        }
     }
-  }
 `;
 
-
-const Login = () =>{
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { loading, error, data, refetch } = useQuery(FIND_MANY_USER);
-  const [
-    loginUser,
-    {
-      data: dataCreateUser,
-      loading: loadingCreateUser,
-      error: errorCreateUser,
-    },
-  ] = useMutation(LoginUser);
+  const [loginUser, {
+    data: dataCreateUser, loading: loadingCreateUser, error: errorCreateUser
+  }] = useMutation(LoginUser);
 
-  console.log(data);
+  // console.log(data);
   const navigate = useNavigate();
-  const rega = () =>{
-    navigate('/reg');
-  }
+  const rega = () => {
+    navigate("/reg");
+  };
 
-  return(
-    <div
+  return (<div
       style={{
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         width: "100%",
         flexDirection: "column",
-        height: "100vh",
+        height: "100vh"
 
       }}
     >
 
       <div className="mainbar">
         {/*<div className="logo">АБЭ</div>*/}
-        <p style={{fontWeight: "500"}}>Вход в соц. сети</p>
+        <p style={{ fontWeight: "500" }}>Вход в соц. сети</p>
         <input
           className="textbox"
           placeholder="Почта"
           value={email} onChange={(e) => setEmail(e.target.value)} />
         <input
+          type="password"
           className="textbox"
           placeholder="Пароль"
           value={password}
@@ -74,26 +54,22 @@ const Login = () =>{
         <button
           className="textbox butIn"
           // style={{ marginTop: 10, width: 100, height: 30 }}
-          onClick={() => {
-            localStorage.setItem('accessToken', loginUser.token);
-            loginUser({
+          onClick={async () => {
+            await loginUser({
               variables: {
                 data: {
-                  email,
-                  password,
-                },
-              },
+                  email, password
+                }
+              }
             })
               .then((data) => {
-                console.log(data);
-                refetch();
-                // alert(email);
+                localStorage.setItem("email", email);
+                localStorage.setItem("accessToken", "Bearer " + data.data.loginUser.token);
               })
               .catch((e) => {
                 // alert(e.message);
               });
 
-            localStorage.setItem('email', email);
             window.location.reload();
           }}
         >
@@ -117,8 +93,7 @@ const Login = () =>{
         <p>После регистрации вы получите доступ ко всем возможностям нашей соц. сети</p>
       </div>
 
-    </div>
-  );
+    </div>);
 };
 
 export default Login;
