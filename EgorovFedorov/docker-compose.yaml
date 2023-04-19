@@ -1,28 +1,31 @@
 version: '1.0'
 services:
-#  client:
-#    build:
-#      context: .
-#      dockerfile: client/Dockerfile
-#    ports:
-#      - ''
-#    environment:
-#
-#    restart: on-failure
-#  server:
-#    build:
-#      context: .
-#      dockerfile: server/Dockerfile
-#    links:
-#      - postgres
-#    ports:
-#      - ''
-#    environment:
-#
-#    restart: on-failure
   postgres:
     image: 'postgres'
     ports:
-      - '0.0.0.0:5432:5432'
+      - '5432:5432'
     environment:
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: Qwerty123!
+      POSTGRES_DB: egorovfedorov
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: on-failure
+  server:
+    build:
+      context: /server
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    ports:
+      - '4000:4000'
+    restart: on-failure
+  client:
+    build:
+      context: /client
+      dockerfile: Dockerfile
+    ports:
+      - '80:80'
+    restart: on-failure
+volumes:
+  postgres-data:

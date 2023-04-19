@@ -7,6 +7,7 @@ import typeDefs from "./graphql/typeDefs";
 import resolvers from "./graphql/resolvers";
 import { GraphQLResolveInfo } from "graphql";
 import { TgBot } from "./tgBot";
+import cors from 'cors';
 
 let schema = makeExecutableSchema({ typeDefs, resolvers });
 
@@ -24,7 +25,7 @@ const middleware = async (
   if (!result.select || Object.keys(result.select).length > 0) {
     args = {
       ...args,
-      ...result,
+      ...result
     };
   }
   return resolve(root, args, context, info);
@@ -36,7 +37,10 @@ const tgBot = new TgBot();
 
 const server = new ApolloServer({
   schema,
-  context: ({ req }) => createContext(req)
+  context: ({ req }) => createContext(req),
+  cors: {
+    origin: "*"
+  }
 });
 
 server.listen().then(({ url }) => {
