@@ -1,0 +1,51 @@
+version: "2.0"
+services:
+    nefu_db:
+        image: postgres:14.6
+        restart: unless-stopped
+        container_name: nefu_db
+        environment:
+            - POSTGRES_DB=nefu_backend
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=56GLd38MzKkU4
+        volumes:
+            - ./dbdata:/var/lib/postgresql/data
+        networks:
+            - app-network
+    nefu_server:
+        container_name: nefu_server
+        depends_on:
+            - nefu_db
+        build:
+            context: ./
+            dockerfile: ./server/Dockerfile
+        ports:
+            - "4000:4000"
+        volumes:
+            - ./server:/usr/src/server
+            - /usr/src/server/node_modules
+        networks:
+            - app-network
+    test-client:
+        container_name: test-client
+        build:
+            context: ./
+            dockerfile: ./test-client/Dockerfile
+        ports:
+            - '3000:3000'
+        volumes:
+            - ./test-client:/usr/src/test-client
+            - /usr/src/test-client/node_modules
+        depends_on:
+            - nefu_server
+        networks:
+            - app-network
+
+volumes:
+    dbdata:
+    server:
+    test-client:
+
+networks:
+    app-network:
+        driver: bridge
