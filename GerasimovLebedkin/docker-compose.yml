@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+    backend:
+        build:
+            context: . 
+            dockerfile: backend/Dockerfile
+        ports:
+            - "8080:8080"
+    telegram:
+        build:
+            context: . 
+            dockerfile: telegram-bot/Dockerfile
+        environment:
+            BOT_NAME: MIVT21_bot
+            BOT_TOKEN: 5091887778:AAG_2hQeb_Eep84LGu1gCPe_2JhjQWWhp-I
