@@ -1,0 +1,52 @@
+version: "3"
+services:
+  db:
+    image: postgres:14.6
+    restart: unless-stopped
+    container_name: db
+    environment:
+      - POSTGRES_DB=DB_backend
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Pa$$w0rd123
+    volumes:
+      - ./dbdata:/var/lib/postgresql/data
+    networks:
+      - app-networks
+  server:
+    container_name: server
+    depends_on:
+      - db
+    build: 
+      context: ./
+      dockerfile: ./server/Dockerfile
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./server:/usr/src/server
+      - /usr/src/server/node_modules
+    networks:
+      - app-networks
+
+  front:
+    container_name: front
+    build: 
+      context: ./
+      dockerfile: ./front/test-front-app/Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./server:/usr/src/front
+      - /usr/src/front/node_modules
+    depends_on:
+      - server
+    networks:
+      - app-networks
+  volumes:
+    db:
+    server:
+    front:
+
+  networks:
+    app-networks:
+      driver: bridge
+    
