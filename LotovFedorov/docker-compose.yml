@@ -30,7 +30,7 @@ services:
         container_name: test-client
         build:
             context: ./
-            dockerfile: ./front/Dockerfile
+            dockerfile: ./test-client/Dockerfile
         ports:
             - '3000:3000'
         volumes:
