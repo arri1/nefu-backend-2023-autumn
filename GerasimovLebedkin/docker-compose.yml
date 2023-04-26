@@ -11,5 +11,5 @@ services:
             context: . 
             dockerfile: telegram-bot/Dockerfile
         environment:
-            BOT_NAME: MIVT21_bot
-            BOT_TOKEN: 5091887778:AAG_2hQeb_Eep84LGu1gCPe_2JhjQWWhp-I
+            BOT_NAME: ${BOT_NAME}
+            BOT_TOKEN: ${BOT_TOKEN}
