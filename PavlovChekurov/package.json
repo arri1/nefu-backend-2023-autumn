@@ -24,7 +24,7 @@
     "nodemon": "^2.0.21"
   },
   "devDependencies": {
-    "@paljs/cli": "5.2.0",
+    "@paljs/cli": "^2.6.1",
     "@types/node": "18.15.3",
     "prettier": "2.8.4",
     "prisma": "^4.11.0",
