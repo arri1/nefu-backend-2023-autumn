@@ -41,6 +41,7 @@ export const Register = (props) => {
             .catch((e) => {
               console.log("Error")
               alert("Error");
+              console.log(e.message)
         });
         console.log(email);
     }
